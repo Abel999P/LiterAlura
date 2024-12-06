@@ -1,7 +1,18 @@
 package com.alura.literalura.principal;
 
+import java.util.List;
+import java.util.Scanner;
+
+import com.alura.literalura.model.Author;
+import com.alura.literalura.model.Datos;
+import com.alura.literalura.model.Libro;
+import com.alura.literalura.repository.AuthorRepository;
+import com.alura.literalura.repository.LibroRepository;
+import com.alura.literalura.service.ConsumoAPI;
+import com.alura.literalura.service.ConvierteDatos;
+
 public class Principal {
-    private RequestAPI requestAPI = new RequestAPI();
+    private ConsumoAPI requestAPI = new ConsumoAPI();
     private Scanner scanner = new Scanner(System.in);
     private String urlBase ="https://gutendex.com/books/";
     private ConvierteDatos convierteDatos = new ConvierteDatos();
@@ -71,21 +82,21 @@ public class Principal {
     }
 
     // Extrae los datos de un libro
-    private DatosLibro getDatosLibro() {
+    private Datos getDatosLibro() {
         System.out.println("Ingrese el nombre del libro");
         var busqueda = scanner.nextLine().toLowerCase().replace(" ","%20");
-        var json = requestAPI.getData(urlBase +
+        var json = requestAPI.obtenerDatos(urlBase +
                 "?search=" +
                 busqueda);
 
-        DatosLibro datosLibro = convierteDatos.obtenerDatos(json, DatosLibro.class);
+        Datos datosLibro = convierteDatos.obtenerDatos(json, Datos.class);
         return datosLibro;
     }
 
     // Busca un libro y guarda infromacion en la BD en sus tablas correspondientes
     private void buscarLibro()
     {
-        DatosLibro datosLibro = getDatosLibro();
+        Datos datosLibro = getDatosLibro();
 
         try {
             Libro libro = new Libro(datosLibro.resultados().get(0));

@@ -1,5 +1,10 @@
 package com.alura.literalura.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Table(name = "libros")
 public class Libro {
@@ -16,8 +21,7 @@ public class Libro {
 
     public Libro(){}
 
-    public Libro(DatosResultados datosLibro) {
-
+    public Libro(DatosLibro datosLibro) {
         this.titulo = datosLibro.titulo();
         this.autor = datosLibro.autorList().get(0).nombreAutor();
         this.lenguaje = datosLibro.language().get(0);

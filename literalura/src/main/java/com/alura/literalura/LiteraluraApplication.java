@@ -1,17 +1,30 @@
 package com.alura.literalura;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class LiteraluraApplication implements CommandLineRunner{
+import com.alura.literalura.principal.Principal;
+import com.alura.literalura.repository.AuthorRepository;
+import com.alura.literalura.repository.LibroRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(LiteraluraApplication.class, args);
+@SpringBootApplication
+public class LiteraluraApplication implements CommandLineRunner
+{
+
+	public static void main(String[] args)
+	{
+		SpringApplication.run(LiteraluraApplication.class,args);
 	}
 
-	public void run(String... args) throws Exception{
-		System.out.println("Hola MUndo");
+	@Autowired
+	private LibroRepository repository;
+	@Autowired
+	private AuthorRepository authorRepository;
+	public void run(String[] args) {
+		Principal principal = new Principal(repository, authorRepository);
+		principal.showMenu();
 	}
 }

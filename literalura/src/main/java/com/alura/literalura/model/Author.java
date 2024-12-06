@@ -1,6 +1,10 @@
 package com.alura.literalura.model;
 
-@Entity
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 @Table (name = "autores")
 public class Author {
     @Id
