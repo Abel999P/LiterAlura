@@ -23,7 +23,7 @@ public class LiteraluraApplication implements CommandLineRunner
 	private LibroRepository repository;
 	@Autowired
 	private AuthorRepository authorRepository;
-	public void run(String[] args) {
+	public void run(String... args) {
 		Principal principal = new Principal(repository, authorRepository);
 		principal.showMenu();
 	}

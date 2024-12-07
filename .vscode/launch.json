@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LiteraluraApplication<literalura>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.alura.literalura.LiteraluraApplication",
+            "projectName": "literalura",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
