@@ -27,7 +27,7 @@ public class Principal {
     }
 
     // Mostrar el menu en consola
-    public void showMenu()
+    public void muestraMenu()
     {
         var opcion = -1;
         while (opcion != 0){
