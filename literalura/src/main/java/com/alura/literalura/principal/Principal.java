@@ -26,7 +26,6 @@ public class Principal {
         this.authorRepository = authorRepository;
     }
 
-    // Mostrar el menu en consola
     public void muestraMenu()
     {
         var opcion = -1;
@@ -81,7 +80,7 @@ public class Principal {
         }
     }
 
-    // Extrae los datos de un libro
+
     private Datos getDatosLibro() {
         System.out.println("Ingrese el nombre del libro");
         var busqueda = scanner.nextLine().toLowerCase().replace(" ","%20");
@@ -93,7 +92,6 @@ public class Principal {
         return datosLibro;
     }
 
-    // Busca un libro y guarda infromacion en la BD en sus tablas correspondientes
     private void buscarLibro()
     {
         Datos datosLibro = getDatosLibro();
@@ -123,7 +121,6 @@ public class Principal {
 
     }
 
-    // Trae los libros guardados en la BD
     private void consultarLibros() {
         libros = libroRepository.findAll();
         libros.stream().forEach(l -> {
@@ -139,7 +136,6 @@ public class Principal {
         });
     }
 
-    // Trae todos los autores de los libros consultados en la BD
     private void consultarAutores() {
         autores = authorRepository.findAll();
         autores.stream().forEach(a -> {
@@ -153,7 +149,7 @@ public class Principal {
         });
     }
 
-    // Trae a los autores apartir de cierto año
+
     public void consultarAutoresPorAno()
     {
         System.out.println("Ingresa el año a partir del cual buscar:");
